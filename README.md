@@ -65,7 +65,7 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
             mBluetoothLeService = null;
         }
     };
-    ```
+ ```
     
 ## 读取数据
 - BluetoothGattService service = gattt.getService(SERVICE_UUID);
