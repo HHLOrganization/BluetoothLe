@@ -21,17 +21,25 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
 
 
 ## 扫描蓝牙设备
-private void scanLeDevice(final boolean enable) {if (enable) {// Stops scanning after a pre-defined scan period.// 预先定义停止蓝牙扫描的时间（因为蓝牙扫描需要消耗较多的电量）mHandler.postDelayed(new Runnable() {@Overridepublic void run() { mScanning = false mBluetoothAdapter.stopLeScan(mLeScanCallback);
-           }
-        }, SCAN_PERIOD);
-        mScanning = true;
-- 定义一个回调接口供扫描结束处理
-        mBluetoothAdapter.startLeScan(mLeScanCallback);
-    } else {
-        mScanning = false;
-        mBluetoothAdapter.stopLeScan(mLeScanCallback);
+    private void scanLeDevice(final boolean enable) {
+        if (enable) {
+            mHandler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    mScanning = false;
+                    mBluetoothAdapter.stopLeScan(mLeScanCallback);
+                    invalidateOptionsMenu();
+                }
+            }, SCAN_PERIOD);
+
+            mScanning = true;
+            mBluetoothAdapter.startLeScan(mLeScanCallback);
+        } else {
+            mScanning = false;
+            mBluetoothAdapter.stopLeScan(mLeScanCallback);
+        }
+        invalidateOptionsMenu();
     }
-}
 
 
 ## 发现服务
