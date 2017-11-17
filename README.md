@@ -10,8 +10,8 @@
 ## 连接蓝牙前的初始化工作
 private BluetoothAdapter mBluetoothAdapter;
 Initializes Bluetooth adapter.
- final BluetoothManager bluetoothManager =(BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
- mBluetoothAdapter = bluetoothManager.getAdapter();
+final BluetoothManager bluetoothManager =(BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+mBluetoothAdapter = bluetoothManager.getAdapter();
  
 ## 如果检测到蓝牙没有开启，尝试开启蓝牙
 if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
@@ -45,6 +45,7 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
 ## 发现服务
  - 管理服务的生命周期
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
+
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder service) {
             mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
