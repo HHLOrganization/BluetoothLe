@@ -8,6 +8,7 @@
 
 
 ## 连接蓝牙前的初始化工作
+```
 private BluetoothAdapter mBluetoothAdapter;
 Initializes Bluetooth adapter.
 final BluetoothManager bluetoothManager =(BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
@@ -18,7 +19,7 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
          Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
          startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
  }
-
+```
 
 ## 扫描蓝牙设备
     private void scanLeDevice(final boolean enable) {
