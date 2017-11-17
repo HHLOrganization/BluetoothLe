@@ -22,6 +22,7 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
 ```
 
 ## 扫描蓝牙设备
+```
     private void scanLeDevice(final boolean enable) {
         if (enable) {
             mHandler.postDelayed(new Runnable() {
@@ -41,10 +42,11 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
         }
         invalidateOptionsMenu();
     }
-
+```
 
 ## 发现服务
  - 管理服务的生命周期
+ ```
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
 
         @Override
@@ -63,7 +65,7 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
             mBluetoothLeService = null;
         }
     };
-    
+    ```
     
 ## 读取数据
 - BluetoothGattService service = gattt.getService(SERVICE_UUID);
