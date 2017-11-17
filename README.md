@@ -21,19 +21,10 @@ if (mBluetoothAdapter == null || !mBluetoothAdapter.isEnabled()) {
 
 
 ## 扫描蓝牙设备
-private void scanLeDevice(final boolean enable) {
-    if (enable) {
-        // Stops scanning after a pre-defined scan period.
-        // 预先定义停止蓝牙扫描的时间（因为蓝牙扫描需要消耗较多的电量）
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mScanning = false;
-                mBluetoothAdapter.stopLeScan(mLeScanCallback);
-            }
+private void scanLeDevice(final boolean enable) {if (enable) {// Stops scanning after a pre-defined scan period.// 预先定义停止蓝牙扫描的时间（因为蓝牙扫描需要消耗较多的电量）mHandler.postDelayed(new Runnable() {@Overridepublic void run() { mScanning = false mBluetoothAdapter.stopLeScan(mLeScanCallback);
+           }
         }, SCAN_PERIOD);
         mScanning = true;
-
 - 定义一个回调接口供扫描结束处理
         mBluetoothAdapter.startLeScan(mLeScanCallback);
     } else {
@@ -46,7 +37,6 @@ private void scanLeDevice(final boolean enable) {
 ## 发现服务
  - 管理服务的生命周期
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
-
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder service) {
             mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
@@ -66,14 +56,14 @@ private void scanLeDevice(final boolean enable) {
     
     
 ## 读取数据
-BluetoothGattService service = gattt.getService(SERVICE_UUID);
-BluetoothGattCharacteristic characteristic = gatt.getCharacteristic(CHARACTER_UUID);
-gatt.readCharacteristic();
+- BluetoothGattService service = gattt.getService(SERVICE_UUID);
+- BluetoothGattCharacteristic characteristic = gatt.getCharacteristic(CHARACTER_UUID);
+- gatt.readCharacteristic();
 
 
 ## 往蓝牙数据通道的写入数据
-BluetoothGattService service = gattt.getService(SERVICE_UUID);
-BluetoothGattCharacteristic characteristic = gatt.getCharacteristic(CHARACTER_UUID);
-characteristic.setValue(sendValue);
-gatt.writeCharacteristic(characteristic);
+- BluetoothGattService service = gattt.getService(SERVICE_UUID);
+- BluetoothGattCharacteristic characteristic = gatt.getCharacteristic(CHARACTER_UUID);
+- characteristic.setValue(sendValue);
+- gatt.writeCharacteristic(characteristic);
 
